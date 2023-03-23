@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_background"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pink">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/iv_cart_item"
+            android:layout_toEndOf="@id/iv_back"
+            android:gravity="center"
+            android:text="Thông tin đơn hàng"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_cart_item"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/green_success"
+                android:drawableEnd="@drawable/ic_baseline_check_24"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
+                android:text="Đơn hàng đã giao thành công"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_baseline_fire_truck_24"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="Thông tin vận chuyển\nBùi Hoàng Hiệp\n0325442426\n123 Lê Văn Việt, phường Tăng Nhơn Phú A, thành phố Thủ Đức, Tp.Hồ Chí Minh\nPhí vận chuyển: đ15.000"
+                android:textColor="@color/black_blur"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:drawableEnd="@drawable/ic_baseline_access_time_24"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="Thời gian vận chuyển\nĐặt hàng lúc: 2022-03-01 23:15\nGiao hàng lúc: 2020-03-05 15:20"
+                android:textColor="@color/black_blur"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+
+                    android:text="Mặt hàng"
+                    android:textColor="@color/black_blur"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:id="@+id/details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivDetail"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/pet" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:id="@+id/tvProductName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cơm chó chất lượng cao c..."
+                            android:textColor="@color/black_blur"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/layout_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/layout_amountBrand"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvProductPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="đ̲ 5̶.̶9̶0̶0̶.̶0̶0̶0̶"
+                                android:textColor="@color/gray_background"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/tv_sale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:background="#EAE024"
+                                android:gravity="center"
+                                android:text="GIẢM ½"
+                                android:textColor="#795548"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_finalPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/layout_price"
+                            android:text="đ̲ 2.950.000"
+                            android:textColor="@color/red_price"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/layout_amountBrand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvProductName"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_amountLeft"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Còn lại : 20"
+                                android:textColor="@color/black_blur"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/tv_brand"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Phân phối bởi: ABC Inc"
+
+                                android:textAlignment="viewEnd"
+                                android:textColor="@color/black_blur"
+                                android:textSize="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Thành tiền:\nđ2.965.000"
+                android:textColor="@color/black_blur"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="Mã vận đơn: 123ABCDEF"
+                android:textColor="@color/black_blur"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
