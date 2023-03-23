@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.loginregisteruipractice.R;
 import com.example.loginregisteruipractice.adapters.ProductsAdapter;
 import com.example.loginregisteruipractice.api.ProductApi;
+import com.example.loginregisteruipractice.models.Category;
 import com.example.loginregisteruipractice.models.Product;
 
 import java.util.ArrayList;
@@ -28,17 +31,18 @@ public class ProductsActivity extends AppCompatActivity {
 
     private ImageView cartRedirect;
     private ImageView imBack;
+    private TextView tv_categoryName;
+    private TextView tv_orderByPrice;
 
     private RecyclerView rvProducts;
+    private Category category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
-
         setUpUI();
         setUpListener();
-        getProduct();
     }
 
     private void setUpListener() {
@@ -63,10 +67,28 @@ public class ProductsActivity extends AppCompatActivity {
         imBack = findViewById(R.id.partial_iv_back);
 
         rvProducts = findViewById(R.id.partial_rvProducts);
+        category = (Category) getIntent().getExtras().get("CATEGORY");
+
+        getProduct(category);
+        tv_categoryName = findViewById(R.id.tv_categoryName);
+        tv_orderByPrice = findViewById(R.id.tv_orderByPrice);
+        if (category != null) {
+            tv_categoryName.setText(category.getName());
+            tv_orderByPrice.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    orderByPrice();
+                }
+            });
+        }
     }
 
-    private void getProduct(){
-        ProductApi.productApi.getAllProduct().enqueue(new Callback<List<Product>>() {
+    private void getProduct(Category category){
+        String categoryId = String.valueOf(category.getId());
+
+        categoryId = (TextUtils.isEmpty(categoryId) || categoryId == null) ? "" : categoryId;
+
+        ProductApi.productApi.getAllProductByCategory(categoryId).enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 products = response.body();
@@ -82,8 +104,12 @@ public class ProductsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                products = new ArrayList<Product>();
+                products = new ArrayList<>();
             }
         });
+    }
+
+    private void orderByPrice() {
+
     }
 }

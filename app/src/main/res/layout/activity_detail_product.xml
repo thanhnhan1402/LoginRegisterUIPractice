@@ -68,49 +68,14 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/layout_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/layout_amountBrand"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tvProductPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="đ̲ 5̶.̶9̶0̶0̶.̶0̶0̶0̶"
-                    android:textColor="@color/gray_background"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/tv_sale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:background="#EAE024"
-                    android:gravity="center"
-                    android:text="GIẢM ½"
-                    android:textColor="#795548"
-                    android:textSize="12dp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_finalPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/layout_price"
-                android:text="đ̲ 2.950.000"
-                android:textColor="@color/red_price"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/layout_amountBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvProductName"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_amountLeft"
@@ -118,17 +83,19 @@
                     android:layout_height="match_parent"
                     android:text="Còn lại : 20"
                     android:textColor="@color/black_blur"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:layout_marginBottom="15dp"/>
 
                 <TextView
-                    android:id="@+id/tv_brand"
+                    android:id="@+id/tv_Price"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Phân phối bởi: ABC Inc"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_amountLeft"
+                    android:text="đ̲ 2.950.000"
+                    android:textColor="@color/red_price"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/black_blur"
-                    android:textSize="10dp" />
             </LinearLayout>
 
             <EditText

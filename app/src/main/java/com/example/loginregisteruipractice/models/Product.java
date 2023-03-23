@@ -1,7 +1,5 @@
 package com.example.loginregisteruipractice.models;
 
-import java.util.ArrayList;
-
 public class Product {
     private int id;
     private String name;
@@ -10,8 +8,9 @@ public class Product {
     private double price;
     private int quantity;
     private String categoryId;
+    private String year;
 
-    public Product(int id, String name, String url, String description, double price, int quantity, String categoryId) {
+    public Product(int id, String name, String url, String description, double price, int quantity, String categoryId, String year) {
         this.id = id;
         this.name = name;
         this.url = url;
@@ -19,6 +18,7 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
         this.categoryId = categoryId;
+        this.year = year;
     }
 
     public int getId() {
@@ -35,6 +35,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getUrl() {
@@ -75,18 +83,5 @@ public class Product {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", categoryId='" + categoryId + '\'' +
-                '}';
     }
 }

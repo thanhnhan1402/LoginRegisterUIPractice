@@ -1,9 +1,8 @@
 package com.example.loginregisteruipractice.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-public class Category {
+public class Category implements Serializable {
     private int id;
     private String name;
     private String url;
@@ -36,14 +35,5 @@ public class Category {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public static List<Category> createCategoryList(){
-        List<Category> list = new ArrayList<Category>();
-        list.add(new Category(1, "Laptop", "https://cdn.tgdd.vn/Products/Images/42/247508/iphone-14-pro-tim-thumb-600x600.jpg"));
-        list.add(new Category(2, "Máy lạnh", "https://tinhocluna.com/wp-content/uploads/2021/04/pc-gaming.jpg"));
-        list.add(new Category(3, "Máy giặt", "https://diennuocnhatlong.vn/uploads/may-lanh-nguyen-ly-hoat-dong-3.jpg"));
-
-        return list;
     }
 }

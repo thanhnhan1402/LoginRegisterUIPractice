@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import com.example.loginregisteruipractice.R;
 import com.example.loginregisteruipractice.adapters.CategoriesAdapter;
 import com.example.loginregisteruipractice.adapters.ProductsAdapter;
+import com.example.loginregisteruipractice.api.CategoryApi;
 import com.example.loginregisteruipractice.api.ProductApi;
 import com.example.loginregisteruipractice.models.Category;
 import com.example.loginregisteruipractice.models.Product;
@@ -30,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private List<Product> products;
     private List<Category> categories;
@@ -117,17 +118,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
     public void setRecycleViewCategory() {
-        // Lookup the recyclerview in activity layout
 
-        // Initialize products
-        categories = Category.createCategoryList();
-        // Create adapters passing in the sample user data
-        CategoriesAdapter adapter = new CategoriesAdapter(this, categories);
-        // Attach the adapters to the recyclerview to populate items
-        rvCategories.setAdapter(adapter);
-        // set a GridLayoutManager with 3 number of columns
-        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        rvCategories.setLayoutManager(horizontalLayoutManager); // set
     }
 
     @Override
@@ -150,8 +141,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
-    private void getProduct(){
-        ProductApi.productApi.getAllProduct().enqueue(new Callback<List<Product>>() {
+    private void getProduct() {
+        ProductApi.productApi.getAllProductByYear("2023").enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 products = response.body();
@@ -167,7 +158,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                products = new ArrayList<Product>();
+                products = new ArrayList<>();
+            }
+        });
+    }
+
+    private void getCategory() {
+        CategoryApi.categoryApi.getAllCategory().enqueue(new Callback<List<Category>>() {
+            @Override
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                categories = response.body();
+
+                if (categories != null) {
+                    CategoriesAdapter adapter = new CategoriesAdapter(HomeActivity.this, categories);
+                    rvCategories.setAdapter(adapter);
+                    LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false);
+                    rvCategories.setLayoutManager(horizontalLayoutManager);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Category>> call, Throwable t) {
+                categories = new ArrayList<>();
             }
         });
     }

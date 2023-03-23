@@ -83,6 +83,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tv_orderByPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
@@ -100,6 +101,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_categoryName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
@@ -111,30 +113,6 @@
                         android:textColor="@color/white"
 
                         />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/border_black"
-                        android:gravity="center"
-                        android:padding="4dp"
-                        android:text="Củi"
-                        android:textColor="@color/white"
-
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:background="@drawable/border_black"
-                        android:gravity="center"
-                        android:padding="4dp"
-                        android:text="Hộp cát"
-                        android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 

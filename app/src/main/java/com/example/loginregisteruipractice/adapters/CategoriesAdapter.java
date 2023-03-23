@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mCtx, ProductsActivity.class);
-                intent.putExtra("NAME", category.getName());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("CATEGORY", category);
+                intent.putExtras(bundle);
                 mCtx.startActivity(intent);
 
                 ((Activity) mCtx).finish();

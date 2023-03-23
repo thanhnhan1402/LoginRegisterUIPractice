@@ -34,7 +34,7 @@ public class CartItem {
         ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
 
         for (int i = 1; i <= num; i++) {
-            cartItems.add(new CartItem(new Product(1, "PC đời mới", "", "", 15, 15, "1"),5));
+            cartItems.add(new CartItem(new Product(1, "PC đời mới", "", "", 15, 15, "1", "2022"),5));
         }
 
         return cartItems;

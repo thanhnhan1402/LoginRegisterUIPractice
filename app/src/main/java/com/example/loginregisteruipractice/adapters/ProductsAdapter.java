@@ -63,6 +63,16 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         TextView price = holder.price;
         price.setText(String.format("%.0f VND", product.getPrice()));
 
+        View view = holder.view;
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, ProductDetailActivity.class);
+                intent.putExtra("PRODUCT_ID", product.getId());
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
     // Returns the total count of items in the list
@@ -74,12 +84,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public ImageView image;
         public TextView name;
         public TextView price;
+        public View view;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -87,19 +98,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-
+            view = itemView;
             image = itemView.findViewById(R.id.image);
             name = itemView.findViewById(R.id.name);
             price = itemView.findViewById(R.id.price);
-
-            itemView.setOnClickListener(this);
         }
-
-        @Override
-        public void onClick(View v) {
-            Intent detail = new Intent(mContext, ProductDetailActivity.class);
-            mContext.startActivity(detail);
-        }
-
     }
 }
